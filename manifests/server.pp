@@ -3,15 +3,18 @@
 class samba::server(
   #$bind_interfaces_only = 'yes',
   $bind_interfaces_only = '',
+  $client_min_protocol = '',
   $deadtime = '',
   $disable_spoolss = '',
   $dns_proxy = '',
   $guest_account = '',
+  $hosts_allow = '',
   $keepalive = '',
   $kerberos_method = '',
   $kernel_oplocks = '',
   $load_printers = '',
   $log_file = '',
+  $log_level = '',
   $map_to_guest = '',
   $max_log_size = '',
   $netbios_name = '',
@@ -60,16 +63,19 @@ class samba::server(
 
   samba::server::option {
     'bind interfaces only':       value => $bind_interfaces_only;
+    'client min protocol':        value => $client_min_protocol;
     'deadtime':                   value => $deadtime;
     'disable spoolss':            value => $disable_spoolss;
     'dns proxy':                  value => $dns_proxy;
     'guest account':              value => $guest_account;
+    'hosts allow':                value => $hosts_allow;
     'interfaces':                 value => $interfaces;
     'keepalive':                  value => $keepalive;
     'kerberos method':            value => $kerberos_method;
     'kernel oplocks':             value => $kernel_oplocks;
     'load printers':              value => $load_printers;
     'log file':                   value => $log_file;
+    'log level':                  value => $log_level;
     'map to guest':               value => $map_to_guest;
     'max log size':               value => $max_log_size;
     'netbios name':               value => $netbios_name;

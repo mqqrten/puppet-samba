@@ -1,6 +1,6 @@
 # == Class samba::server
 #
-class samba::server(
+class samba::server (
   #$bind_interfaces_only = 'yes',
   $bind_interfaces_only = '',
   $client_min_protocol = '',
@@ -9,6 +9,7 @@ class samba::server(
   $dns_proxy = '',
   $guest_account = '',
   $hosts_allow = '',
+  $interfaces = '',
   $keepalive = '',
   $kerberos_method = '',
   $kernel_oplocks = '',
@@ -40,10 +41,8 @@ class samba::server(
   $usershare_allow_guests = '',
   $users = {},
   $workgroup = '',
-  $interfaces = '',
 )
 {
-
   include samba::server::install
   include samba::server::config
   include samba::server::service
@@ -62,42 +61,42 @@ class samba::server(
   }
 
   samba::server::option {
-    'bind interfaces only':       value => $bind_interfaces_only;
-    'client min protocol':        value => $client_min_protocol;
-    'deadtime':                   value => $deadtime;
-    'disable spoolss':            value => $disable_spoolss;
-    'dns proxy':                  value => $dns_proxy;
-    'guest account':              value => $guest_account;
-    'hosts allow':                value => $hosts_allow;
-    'interfaces':                 value => $interfaces;
-    'keepalive':                  value => $keepalive;
-    'kerberos method':            value => $kerberos_method;
-    'kernel oplocks':             value => $kernel_oplocks;
-    'load printers':              value => $load_printers;
-    'log file':                   value => $log_file;
-    'log level':                  value => $log_level;
-    'map to guest':               value => $map_to_guest;
-    'max log size':               value => $max_log_size;
-    'netbios name':               value => $netbios_name;
-    'obey pam restrictions':      value => $obey_pam_restrictions;
-    'os level':                   value => $os_level;
-    'pam password change':        value => $pam_password_change;
-    'panic action':               value => $panic_action;
-    'passdb backend':             value => $passdb_backend;
-    'passwd chat':                value => $passwd_chat;
-    'passwd program':             value => $passwd_program;
-    'preferred master':           value => $preferred_master;
-    'printcap name':              value => $printcap_name;
-    'printing':                   value => $printing;
-    'realm':                      value => $realm;
-    'security':                   value => $security;
-    'server role':                value => $server_role;
-    'server string':              value => $server_string;
-    'socket options':             value => $socket_options;
-    'syslog':                     value => $syslog;
-    'unix password sync':         value => $unix_password_sync;
-    'usershare allow guests':     value => $usershare_allow_guests;
-    'workgroup':                  value => $workgroup;
+    'bind interfaces only':   value => $bind_interfaces_only;
+    'client min protocol':    value => $client_min_protocol;
+    'deadtime':               value => $deadtime;
+    'disable spoolss':        value => $disable_spoolss;
+    'dns proxy':              value => $dns_proxy;
+    'guest account':          value => $guest_account;
+    'hosts allow':            value => $hosts_allow;
+    'interfaces':             value => $interfaces;
+    'keepalive':              value => $keepalive;
+    'kerberos method':        value => $kerberos_method;
+    'kernel oplocks':         value => $kernel_oplocks;
+    'load printers':          value => $load_printers;
+    'log file':               value => $log_file;
+    'log level':              value => $log_level;
+    'map to guest':           value => $map_to_guest;
+    'max log size':           value => $max_log_size;
+    'netbios name':           value => $netbios_name;
+    'obey pam restrictions':  value => $obey_pam_restrictions;
+    'os level':               value => $os_level;
+    'pam password change':    value => $pam_password_change;
+    'panic action':           value => $panic_action;
+    'passdb backend':         value => $passdb_backend;
+    'passwd chat':            value => $passwd_chat;
+    'passwd program':         value => $passwd_program;
+    'preferred master':       value => $preferred_master;
+    'printcap name':          value => $printcap_name;
+    'printing':               value => $printing;
+    'realm':                  value => $realm;
+    'security':               value => $security;
+    'server role':            value => $server_role;
+    'server string':          value => $server_string;
+    'socket options':         value => $socket_options;
+    'syslog':                 value => $syslog;
+    'unix password sync':     value => $unix_password_sync;
+    'usershare allow guests': value => $usershare_allow_guests;
+    'workgroup':              value => $workgroup;
   }
 
   create_resources(samba::server::share, $shares)
